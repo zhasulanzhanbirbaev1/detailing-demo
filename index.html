@@ -717,7 +717,7 @@ window.__ember=(function(){const c=$('#em');if(!c)return()=>{};const x=c.getCont
   const a=1-cl(p*7);tl.style.opacity=a*(1-cl((p-.3)*6));cue.style.opacity=a;pgw.style.opacity=1-cl((p-.62)*8);pg.style.transform=`scaleY(${cl(p/.64)})`;
   if(!emb)fab.classList.toggle('on',sc.getBoundingClientRect().bottom<innerHeight*.6)}
  function loop(){
-  const p=reduce?1:prog();want=cl(p/.64)*(dur-.05);
+  const p=(reduce&&emb)?1:prog();want=cl(p/.64)*(dur-.05);
   cur+=(want-cur)*(emb?.4:.16);if(Math.abs(want-cur)<.003)cur=want;
   if(ready)draw(cur);
   ui(p);if(window.__ember)window.__ember(cl((p-.6)/.3));requestAnimationFrame(loop)}
