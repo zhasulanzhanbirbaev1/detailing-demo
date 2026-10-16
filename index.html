@@ -228,7 +228,7 @@ details.dt[open] .row .ar{background:var(--gold);color:#000;border-color:var(--g
 .sdp .det{padding:0;max-width:none}.sdp .det .dh{display:block;font:500 clamp(30px,3.4vw,54px)/1 var(--f);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:16px}
 .sdp .n{display:block;font:italic 400 28px/1 var(--s);color:var(--gold);margin-bottom:14px}
 .sdp.sw .det{animation:sw .6s cubic-bezier(.2,.7,.2,1)}@keyframes sw{from{opacity:0;transform:translateY(18px)}}
-.emb #scene{height:auto}.emb .stage{position:relative;height:clamp(600px,170vw,940px)}.emb .hdr,.emb .fab{position:absolute}.emb .fab{display:none}.emb .cue{display:none}.emb .stage{cursor:pointer}
+html.auto:not(.emb) #scene{height:100vh!important;height:100svh!important}html.auto .cue,html.auto .prog{display:none}html.auto .stage{cursor:pointer}.emb #scene{height:auto}.emb .stage{position:relative;height:clamp(600px,170vw,940px)}.emb .hdr,.emb .fab{position:absolute}.emb .fab{display:none}.emb .cue{display:none}.emb .stage{cursor:pointer}
 @media(max-width:900px){.det{padding-left:0}.dc{grid-template-columns:1fr}}
 
 .sh{display:none}
@@ -698,7 +698,7 @@ window.__ember=(function(){const c=$('#em');if(!c)return()=>{};const x=c.getCont
  const mob=matchMedia('(max-width:760px)').matches;
  const sc=$('#scene'),v=$('#hv'),fin=$('#fin'),copy=$('#copy'),tl=$('#tl'),cue=$('#cue'),pg=$('#pg i'),pgw=$('#pg'),fab=$('#fab'),hp=$('#hp'),stage=document.querySelector('.stage');
  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
- let ready=false,cur=0,dur=8,want=0,emb=false,t0=0;
+ let ready=false,cur=0,dur=8,want=0,emb=false,t0=performance.now()+(document.getElementById('intro')?2600:600);document.documentElement.classList.add('auto');
  const FR=/*FR*/null||Array.from({length:96},(_,i)=>'assets/f/'+String(i+1).padStart(3,'0')+'.jpg');
  const N=FR.length,imgs=new Array(N),cx=v.getContext('2d');v.width=1100;v.height=619;let lastKey=-1;
  const lite=innerWidth<700,seen=new Set(),ord=[];[N-1,16,8,4,2,1].forEach(st=>{for(let i=(st===N-1?0:0);i<N;i+=(st===N-1?N-1:st)){if(!seen.has(i)&&!(lite&&i%2&&i<N-1)){seen.add(i);ord.push(i)}}});
@@ -709,15 +709,15 @@ window.__ember=(function(){const c=$('#em');if(!c)return()=>{};const x=c.getCont
  /* страница показана во фрейме, который растянут на всю высоту: прокрутки внутри нет, сцена играет сама */
  const chk=()=>{const e=innerHeight>Math.max(screen.height,screen.width,900)*1.25;if(e!==emb){emb=e;document.documentElement.classList.toggle('emb',e);t0=performance.now()+(document.getElementById('intro')?2600:600)}};
  chk();addEventListener('resize',chk);let n=0;const ti=setInterval(()=>{chk();if(++n>12)clearInterval(ti)},500);
- stage.addEventListener('click',()=>{if(emb)t0=performance.now()+300});
- function prog(){if(emb){const q=cl((performance.now()-t0)/7000);return q*q*(3-2*q)}const r=sc.getBoundingClientRect();return cl(-r.top/(sc.offsetHeight-innerHeight))}
+ stage.addEventListener('click',()=>{t0=performance.now()+300});
+ function prog(){const q=cl((performance.now()-t0)/7000);return q*q*(3-2*q)}
  function ui(p){
   const f=cl((p-.66)/.16);
   fin.style.opacity=f;if(!mob){const t=`translateX(${f*4.2}vw) scale(${1+f*.1})`;v.style.transform=t;hp.style.transform=t}copy.style.opacity=f;copy.style.transform=`translateY(${(1-f)*40}px)`;copy.classList.toggle('on',f>.5);
   const a=1-cl(p*7);tl.style.opacity=a*(1-cl((p-.3)*6));cue.style.opacity=a;pgw.style.opacity=1-cl((p-.62)*8);pg.style.transform=`scaleY(${cl(p/.64)})`;
   if(!emb)fab.classList.toggle('on',sc.getBoundingClientRect().bottom<innerHeight*.6)}
  function loop(){
-  const p=(reduce&&emb)?1:prog();want=cl(p/.64)*(dur-.05);
+  const p=prog();want=cl(p/.64)*(dur-.05);
   cur+=(want-cur)*(emb?.4:.16);if(Math.abs(want-cur)<.003)cur=want;
   if(ready)draw(cur);
   ui(p);if(window.__ember)window.__ember(cl((p-.6)/.3));requestAnimationFrame(loop)}
