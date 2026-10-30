@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <script>document.documentElement.classList.add('js');if(innerWidth>900&&matchMedia('(hover:hover)').matches)document.documentElement.classList.add('dk')</script>
-<title>Obsidian — студия детейлинга</title>
-<meta name="description" content="Obsidian — концепт сайта студии детейлинга: керамика, полировка, плёнки, шумоизоляция, тонировка.">
+<title>Detailing Lab — демо-сайт детейлинг-студии</title>
+<meta name="description" content="Студия детейлинга в Астане: керамика, полировка, плёнки, шумоизоляция, тонировка. Гарантия 7 лет. Ежедневно 10:00–22:00.">
 <meta name="theme-color" content="#070605">
 <style>
 @font-face{font-family:'IT';src:url(fonts/it.woff) format('woff');font-weight:100 900;font-display:swap}
@@ -139,7 +139,7 @@ section.sec{padding:clamp(80px,12vw,180px) var(--pad);position:relative}
 .inp::placeholder{color:#6f6657}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
 .note{font-size:13px;color:var(--mute)}
-.err.ok{color:var(--gold3)}.err{color:#e58c6a;font-size:14px;min-height:20px}
+.err{color:#e58c6a;font-size:14px;min-height:20px}
 .info{border:1px solid var(--line);padding:clamp(26px,3vw,48px);background:linear-gradient(160deg,rgba(230,194,122,.07),transparent)}
 .info h4{font:italic 400 34px/1 var(--s);color:var(--gold);margin-bottom:26px}
 .info dl{display:grid;gap:22px}
@@ -186,14 +186,8 @@ footer{padding:50px var(--pad) 110px;border-top:1px solid var(--line);display:fl
 #glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:40;opacity:0;background:radial-gradient(circle,rgba(230,194,122,.13),transparent 62%);mix-blend-mode:screen;transition:opacity .5s}
 .dk #glow{opacity:1}
 /* заголовки */
-.h .ln{display:block;overflow:hidden;padding:.1em 0 .14em;margin:-.1em 0 -.14em}
-.h .ln>span{display:block}
-.js .rv .h .ln>span{transform:translateY(110%) rotate(2deg);transform-origin:0 100%;transition:transform 1.15s cubic-bezier(.16,.84,.2,1)}
-.js .rv.in .h .ln>span{transform:none}
-.js .rv.in .h .ln:nth-child(2)>span{transition-delay:.09s}.js .rv.in .h .ln:nth-child(3)>span{transition-delay:.18s}
-#sp{position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold2),var(--gold3));pointer-events:none}
-.dk .btn{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,color .3s,box-shadow .3s}
-@media(prefers-reduced-motion:reduce){.js .rv .h .ln>span{transform:none;transition:none}}
+.js .sec-h .h{opacity:0;filter:blur(10px);letter-spacing:.06em;transition:opacity 1.1s,filter 1.1s,letter-spacing 1.3s cubic-bezier(.2,.7,.2,1)}
+.js .sec-h.in .h{opacity:1;filter:none;letter-spacing:-.025em}
 /* кольцо услуг */
 .ring-wrap{display:none}
 .dk .ring-wrap{display:block;position:relative;height:clamp(540px,68vh,660px);perspective:2000px;margin:10px calc(var(--pad) * -1) 0;overflow:hidden;cursor:grab;touch-action:pan-y}
@@ -377,7 +371,7 @@ html:not(.js) .film .fd,.emb .film .fd,html:not(.js) .film .fc,.emb .film .fc,.e
 .orb .ofs:before,.orb .ofs:after{content:"";position:absolute;left:0;right:0;z-index:2;pointer-events:none;height:16vh}
 .orb .ofs:before{top:0;background:linear-gradient(#050403,transparent)}.orb .ofs:after{bottom:0;background:linear-gradient(transparent,var(--bg))}
 .orb .ot{position:absolute;z-index:3;left:var(--pad);top:clamp(90px,16vh,160px);max-width:min(560px,86vw);transition:opacity .3s}
-.orb .ot .kick{display:block;margin-bottom:18px}.orb .ot .h{font-size:clamp(30px,3.8vw,64px);line-height:1}
+.orb .ot .kick{display:block;margin-bottom:18px}.orb .ot .h{font-size:clamp(34px,5.4vw,88px);line-height:.98}
 .orb .oh{position:absolute;z-index:3;left:50%;bottom:clamp(60px,10vh,100px);transform:translateX(-50%);font:500 12px/1 var(--f);letter-spacing:.24em;text-transform:uppercase;color:var(--mute);white-space:nowrap;transition:opacity .3s}
 html:not(.js) .orb,.emb .orb{height:auto}
 html:not(.js) .orb .ofs,.emb .orb .ofs{position:relative;height:clamp(460px,100vw,720px)}
@@ -385,15 +379,29 @@ html:not(.js) .orb canvas,.emb .orb canvas{display:none}html:not(.js) .orb .ofb,
 html:not(.js) .orb .oh,.emb .orb .oh{display:none}
 @media(max-width:760px){.orb canvas{width:128vw;height:auto;left:50%;top:60%}.orb .ofs{background:#050403}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* perf: лёгкий скролл */
+body:after{mix-blend-mode:normal;opacity:.035}
+.hdr.sc{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(7,6,5,.92)}
+.lb{backdrop-filter:none}
+section.sec{content-visibility:auto;contain-intrinsic-size:auto 900px}
+@media(max-width:900px),(hover:none){
+ body:after,#glow,#em,#bg{display:none!important}
+ .js .sec-h .h{filter:none}
+ .stage:before{display:none}
+ .mq div{animation-duration:60s}
+ .film .sc img{filter:none}
+ *{-webkit-tap-highlight-color:transparent}
+}
 </style>
 </head>
 <body>
 
-<div id="intro" aria-hidden="true"><i class="hl a"></i><i class="hl b"></i><span class="t">Obsidian</span></div>
+<div id="intro" aria-hidden="true"><i class="hl a"></i><i class="hl b"></i><span class="t">Detailing Lab</span></div>
 <canvas id="bg" aria-hidden="true"></canvas>
 <div id="glow"></div>
 <header class="hdr" id="hdr">
-  <a class="logo" href="#top">Obsidian<i>studio</i></a>
+  <a class="logo" href="#top">Detailing<i>Lab</i></a>
   <nav class="nav">
     <a class="l" href="#uslugi">Услуги</a>
     <a class="l" href="#garantiya">Гарантия</a>
@@ -413,59 +421,59 @@ html:not(.js) .orb .oh,.emb .orb .oh{display:none}
     <div class="fin" id="fin"></div>
 
     <div class="top-l" id="tl">
-      <span class="kick">Студия детейлинга</span>
+      <span class="kick">Студия детейлинга · Астана</span>
     </div>
     <div class="prog" id="pg"><i></i></div>
     <div class="cue" id="cue">Листайте</div>
 
     <div class="copy" id="copy">
       <div>
-        <span class="kick">Obsidian · Детейлинг</span>
-        <h1 class="hero-h">Блеск, который <em>не смывается</em></h1>
+        <span class="kick">Detailing Lab · демо-проект</span>
+        <h1 class="hero-h">Блеск, который держится <em>семь лет</em></h1>
         <div class="cta">
           <a class="btn" href="#zapis">Записаться на осмотр →</a>
-          <a class="btn o" href="#raboty">Смотреть работы</a>
+          <a class="btn o" href="#svc">Все услуги</a>
         </div>
       </div>
-      <div class="meta"><b>Астана</b>Каждый день<br>10:00–22:00</div>
+      <div class="meta"><b>Астана</b>Ежедневно 10:00–22:00</div>
     </div>
   </div>
 </div>
 
 <!-- ===== ДОВЕРИЕ ===== -->
 <section class="orb" id="orb" aria-label="Камера вокруг автомобиля"><div class="ofs"><canvas id="oc" width="1100" height="619"></canvas><img class="ofb" src="assets/o/040.jpg" alt="">
-<div class="ot"><h2 class="h">Смотрим туда,<br>куда <em>не смотрят другие</em></h2></div></div></section>
+<div class="ot"><h2 class="h">Каждая деталь<br><em>на виду</em></h2></div></div></section>
 
 <div class="trust rv">
-  <div><b><u data-c="7">7</u><i>лет</i></b><span>гарантия на керамику</span></div>
-  <div><b><u data-c="9">9</u></b><span>направлений под одной крышей</span></div>
-  <div><b class="tm">10:00–22:00</b><span>каждый день, без выходных</span></div>
-  <div><b>1</b><span>мастер на вашу машину. Без конвейера</span></div>
+  <div><b><u data-c="7">7</u><i>лет</i></b><span>гарантия на работы</span></div>
+  <div><b><u data-c="9">9</u></b><span>услуг под ключ</span></div>
+  <div><b class="tm">10:00–22:00</b><span>ежедневно, без выходных</span></div>
+  <div><b>1</b><span>мастер. Работает лично</span></div>
 </div>
 
 <div class="mq" aria-hidden="true"><div><span>Керамика</span><span>·</span><span>Полировка</span><span>·</span><span>Плёнка</span><span>·</span><span>Шумоизоляция</span><span>·</span><span>Тонировка</span><span>·</span><span>Автосвет</span><span>·</span><span>Химчистка</span><span>·</span><span>Лобовое стекло</span><span>·</span><span>Керамика</span><span>·</span><span>Полировка</span><span>·</span><span>Плёнка</span><span>·</span><span>Шумоизоляция</span><span>·</span><span>Тонировка</span><span>·</span><span>Автосвет</span><span>·</span><span>Химчистка</span><span>·</span><span>Лобовое стекло</span><span>·</span></div></div>
 <!-- ===== УСЛУГИ ===== -->
 <section class="film" id="film" style="--n:5" aria-label="Работа мастера"><div class="fs"><div class="sweep" id="fsw"></div>
-<div class="sc on"><img src="assets/hood.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Полировка · Керамика</span><h2 class="h">Царапины уходят.<br><em>Блеск остаётся</em></h2><p>Снимаем паутину и потёртости, закрываем лак керамикой. Грязь больше не цепляется.</p></div></div>
-<div class="sc"><img src="assets/front.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Автосвет · Ретрофит</span><h2 class="h">Видно дорогу,<br><em>а не туман</em></h2><p>Ретрофит фар: ровный яркий пучок, который не слепит встречных.</p></div></div>
-<div class="sc"><img src="assets/profile.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Плёнка</span><h2 class="h">Новый цвет<br><em>без покраски</em></h2><p>Полиуретан принимает гравий на себя. Винил меняет машину и снимается без следа.</p></div></div>
-<div class="sc"><img src="assets/interior.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Шумоизоляция · Салон</span><h2 class="h">Тишина<br><em>на любой скорости</em></h2><p>Гасим гул арок, шум дороги и дребезг панелей. Музыка звучит так, как задумано.</p></div></div>
-<div class="sc"><img src="assets/last.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Гарантия</span><h2 class="h">Семь лет.<br><em>Письменно</em></h2><p>Гарантия на керамику оформляется документом. Условия обсуждаем до начала работ, а не после.</p><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div></div>
+<div class="sc on"><img src="assets/hood.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Полировка · Керамика</span><h2 class="h">Глубина цвета,<br>которая <em>держится</em></h2><p>Мастер убирает мелкие царапины, наносит керамику и отдаёт машину с гарантией 7 лет.</p></div></div>
+<div class="sc"><img src="assets/front.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Автосвет · Ретрофит</span><h2 class="h">Свет как <em>у нового</em></h2><p>Ярче и ровнее, с настроенным пучком, который не слепит встречных.</p></div></div>
+<div class="sc"><img src="assets/profile.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Плёнка</span><h2 class="h">Защита или новый <em>цвет</em></h2><p>Полиуретановая плёнка защищает лак, виниловая меняет вид кузова.</p></div></div>
+<div class="sc"><img src="assets/interior.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Шумоизоляция · Салон</span><h2 class="h">Тише на любой <em>скорости</em></h2><p>Меньше шума дороги и гула колёс, чище звук аудиосистемы.</p></div></div>
+<div class="sc"><img src="assets/last.jpg" alt="" loading="lazy"><div class="st"><span class="kick">Гарантия</span><h2 class="h">Семь лет<br>на <em>результат</em></h2><p>Работает один мастер, лично. Условия гарантии он объясняет при осмотре.</p><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div></div>
 <div class="fd" id="fd"><i></i><i></i><i></i><i></i><i></i></div><div class="fc" id="fc">01 / 05</div></div></section>
 
 <section class="sec" id="uslugi">
   <div class="sec-h rv">
-    <div><span class="kick">Услуги</span><h2 class="h">Девять услуг.<br><em>Ноль халтуры</em></h2></div>
+    <div><span class="kick">Услуги</span><h2 class="h">Девять способов<br>вернуть <em>новый вид</em></h2></div>
     <p class="lead" style="display:none"></p>
   </div>
   <div class="shp" id="shp"><div class="sh rv" id="sh"><ul class="shl" id="shl"></ul><div class="shr"><div class="shi" id="shi"></div><div class="shd" id="shd"></div></div></div></div>
-  <div class="svc rv" id="svc"><details class="dt"><summary class="row"><span class="n">01</span><h3>Ремонт лобового стекла</h3><p>Скол не приговор. Чиним, пока не пошла трещина.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Ремонт лобового стекла</h3><p class="ld">Небольшие сколы и трещины можно восстановить без замены стекла. Так сохраняется заводское стекло, а повреждение перестаёт расти. Чем раньше обратиться, тем лучше результат: скол «растёт» от тряски и перепадов температуры.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Скол от камня на трассе</li><li>Короткая трещина на стекле</li><li>След от удара, который начинает расходиться</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр повреждения: можно ли ремонтировать</li><li>Очистка зоны скола</li><li>Заполнение полимером и выравнивание</li><li>Полировка места ремонта</li></ol></div><div><h4>Что вы получите</h4><ul><li>Повреждение перестаёт расти</li><li>Место скола становится малозаметным</li><li>Стекло остаётся заводским</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="0">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">02</span><h3>Автосвет, ретрофит</h3><p>Яркий ровный свет вместо мутных фар.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Автосвет, ретрофит</h3><p class="ld">Ретрофит — это замена штатных линз и модулей на современные, без замены автомобиля и без «колхоза». Свет становится ярче и ровнее, дорога видна дальше и безопаснее ночью.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Тусклый или жёлтый свет фар</li><li>Хочется современный вид оптики</li><li>Фары потускнели и стали мутными</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр фар и подбор решения под вашу машину</li><li>Аккуратное вскрытие корпуса фары</li><li>Установка модулей и герметизация</li><li>Регулировка светового пучка</li></ol></div><div><h4>Что вы получите</h4><ul><li>Ярче и ровнее свет на дороге</li><li>Современный вид передней оптики</li><li>Настроенный пучок, который не слепит встречных</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="1">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">03</span><h3>Оклейка кузова и салона</h3><p>Новый цвет кузова и салона без покраски.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Оклейка кузова и салона</h3><p class="ld">Плёнка меняет внешний вид автомобиля и защищает поверхность. Можно оклеить весь кузов или отдельные элементы, а также детали салона: пластик, вставки, панели.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Хотите сменить цвет без покраски</li><li>Нужно скрыть потёртости на элементах</li><li>Хочется обновить салон: глянец, карбон, матовый пластик</li></ul></div><div><h4>Как проходит</h4><ol><li>Мойка и подготовка поверхности</li><li>Подбор цвета и фактуры плёнки</li><li>Раскрой и оклейка элементов</li><li>Прогрев краёв и финальная проверка</li></ol></div><div><h4>Что вы получите</h4><ul><li>Новый цвет или фактура</li><li>Защита поверхности под плёнкой</li><li>Плёнку можно снять и вернуть прежний вид</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="2">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">04</span><h3>Полиуретановая и виниловая плёнка</h3><p>Полиуретан защищает лак, винил меняет стиль.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Полиуретановая и виниловая плёнка</h3><p class="ld">Это два разных материала для разных задач. Полиуретановая плёнка защищает лак от сколов и мелких царапин. Виниловая меняет цвет и стиль автомобиля. Какую выбрать, подскажет мастер на осмотре.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Новый автомобиль, который хочется сохранить</li><li>Много поездок по трассе и сколов от гравия</li><li>Нужен матовый, цветной или необычный вид</li></ul></div><div><h4>Как проходит</h4><ol><li>Разговор: какая задача важнее — защита или цвет</li><li>Подготовка кузова</li><li>Монтаж плёнки на нужные элементы или весь кузов</li><li>Контроль краёв и швов</li></ol></div><div><h4>Что вы получите</h4><ul><li>Защита лакокрасочного покрытия</li><li>Или новый цвет и фактура кузова</li><li>Аккуратные края без лишних стыков</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="3">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">05</span><h3>Шумоизоляция</h3><p>Минус гул и дребезг. Плюс нервы.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Шумоизоляция</h3><p class="ld">Снижает шум дороги, колёс и ветра в салоне. В машине становится спокойнее, музыка звучит чище, а длинные поездки меньше утомляют. Можно обработать двери, пол, арки, багажник, крышу.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Громко на трассе</li><li>Гул колёс в арках</li><li>Звук из багажника и дребезжание панелей</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр и выбор зон обработки</li><li>Аккуратный демонтаж обшивки</li><li>Укладка материалов на нужные участки</li><li>Сборка и проверка: ничего не скрипит</li></ol></div><div><h4>Что вы получите</h4><ul><li>Тише в салоне на любой скорости</li><li>Чище звук аудиосистемы</li><li>Комфортнее дальние поездки</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="4">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">06</span><h3>Химчистка и мойка моторного отсека</h3><p>Чистый подкапотный: видно каждую утечку.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Химчистка и мойка моторного отсека</h3><p class="ld">Чистый моторный отсек проще обслуживать: сразу видно подтёки масла и жидкостей, а при продаже машина выглядит ухоженной. Мойка выполняется бережно: чувствительные узлы и электрику защищают.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Грязь и масляный налёт под капотом</li><li>Подготовка автомобиля к продаже</li><li>Перед диагностикой или ремонтом, чтобы видеть утечки</li></ul></div><div><h4>Как проходит</h4><ol><li>Защита чувствительных узлов и электрики</li><li>Нанесение очистителя</li><li>Бережная мойка и сушка</li><li>Обработка пластика защитным составом</li></ol></div><div><h4>Что вы получите</h4><ul><li>Чистый моторный отсек</li><li>Аккуратный вид под капотом</li><li>Подтёки сразу заметны</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="5">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">07</span><h3>Полировка кузова</h3><p>Минус паутина и царапины, плюс глубина цвета.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Полировка кузова</h3><p class="ld">Убирает мелкие царапины, «паутину», потускнение и возвращает глубину цвета. При полировке снимается тонкий слой лака, поэтому мастер сначала оценивает состояние покрытия, а уже потом выбирает режим работы.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Потускнел цвет, появилась «паутина»</li><li>Мелкие царапины и следы от мойки</li><li>Подготовка к керамике или плёнке</li></ul></div><div><h4>Как проходит</h4><ol><li>Мойка и очистка кузова</li><li>Оценка состояния лака</li><li>Полировка в несколько проходов</li><li>Финальная протирка и осмотр при свете</li></ol></div><div><h4>Что вы получите</h4><ul><li>Ровный глубокий блеск</li><li>Убранные мелкие дефекты</li><li>Идеальная основа под керамику</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="6">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">08</span><h3>Нанесение керамики</h3><p>Твёрдый слой блеска. Грязь не цепляется.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Нанесение керамики</h3><p class="ld">Керамическое покрытие создаёт на кузове твёрдый защитный слой: блеск, водоотталкивание, грязь смывается легче. Наносится после полировки, когда поверхность подготовлена. На работы действует гарантия 7 лет.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Новый автомобиль, который хочется защитить</li><li>После полировки, чтобы закрепить результат</li><li>Хотите, чтобы машина дольше оставалась чистой</li></ul></div><div><h4>Как проходит</h4><ol><li>Мойка и подготовка поверхности</li><li>Полировка при необходимости</li><li>Нанесение керамического состава</li><li>Выдержка и финальный осмотр</li></ol></div><div><h4>Что вы получите</h4><ul><li>Стойкий блеск и защита лака</li><li>Вода и грязь стекают легче</li><li>Гарантия 7 лет, условия объясняются при осмотре</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="7">Записаться на эту услугу →</button></div></div></details><details class="dt"><summary class="row"><span class="n">09</span><h3>Тонирование стёкол и детейлинг</h3><p>Прохлада, приватность и полный уход за один визит.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Тонирование стёкол и детейлинг</h3><p class="ld">Тонировка снижает нагрев салона и яркость солнца, добавляет приватности. Комплексный детейлинг — это уход за автомобилем снаружи и внутри за один визит. Допустимое затемнение мастер подскажет с учётом правил.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Жарко в салоне летом</li><li>Нужна приватность и меньше бликов</li><li>Хочется освежить автомобиль целиком</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр и подбор плёнки по затемнению</li><li>Подготовка стёкол</li><li>Установка плёнки без пузырей и пыли</li><li>Комплексная очистка по желанию: кузов и салон</li></ol></div><div><h4>Что вы получите</h4><ul><li>Комфортнее в жару</li><li>Больше приватности</li><li>Свежий вид автомобиля снаружи и внутри</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="8">Записаться на эту услугу →</button></div></div></details><a class="row more" href="#zapis" data-book="-1"><span class="n">+</span><h3>Другая услуга?</h3><p>Опишите задачу, мастер подскажет после осмотра.</p><span class="ar">→</span></a></div>
-  <p class="note rv" style="margin-top:26px">Цену называем после осмотра. Один раз и окончательно: без «от 5 000» на сайте и сюрпризов на кассе.</p>
+  <div class="svc rv" id="svc"><details class="dt"><summary class="row"><span class="n">01</span><h3>Ремонт лобового стекла</h3><p>Сколы и трещины: восстановим стекло.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Ремонт лобового стекла</h3><p class="ld">Небольшие сколы и трещины можно восстановить без замены стекла. Так сохраняется заводское стекло, а повреждение перестаёт расти. Чем раньше обратиться, тем лучше результат: скол «растёт» от тряски и перепадов температуры.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Скол от камня на трассе</li><li>Короткая трещина на стекле</li><li>След от удара, который начинает расходиться</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр повреждения: можно ли ремонтировать</li><li>Очистка зоны скола</li><li>Заполнение полимером и выравнивание</li><li>Полировка места ремонта</li></ol></div><div><h4>Что вы получите</h4><ul><li>Повреждение перестаёт расти</li><li>Место скола становится малозаметным</li><li>Стекло остаётся заводским</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="0">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">02</span><h3>Автосвет, ретрофит</h3><p>Современный свет вместо штатного.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Автосвет, ретрофит</h3><p class="ld">Ретрофит — это замена штатных линз и модулей на современные, без замены автомобиля и без «колхоза». Свет становится ярче и ровнее, дорога видна дальше и безопаснее ночью.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Тусклый или жёлтый свет фар</li><li>Хочется современный вид оптики</li><li>Фары потускнели и стали мутными</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр фар и подбор решения под вашу машину</li><li>Аккуратное вскрытие корпуса фары</li><li>Установка модулей и герметизация</li><li>Регулировка светового пучка</li></ol></div><div><h4>Что вы получите</h4><ul><li>Ярче и ровнее свет на дороге</li><li>Современный вид передней оптики</li><li>Настроенный пучок, который не слепит встречных</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="1">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">03</span><h3>Оклейка кузова и салона</h3><p>Плёнка на кузов и элементы салона.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Оклейка кузова и салона</h3><p class="ld">Плёнка меняет внешний вид автомобиля и защищает поверхность. Можно оклеить весь кузов или отдельные элементы, а также детали салона: пластик, вставки, панели.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Хотите сменить цвет без покраски</li><li>Нужно скрыть потёртости на элементах</li><li>Хочется обновить салон: глянец, карбон, матовый пластик</li></ul></div><div><h4>Как проходит</h4><ol><li>Мойка и подготовка поверхности</li><li>Подбор цвета и фактуры плёнки</li><li>Раскрой и оклейка элементов</li><li>Прогрев краёв и финальная проверка</li></ol></div><div><h4>Что вы получите</h4><ul><li>Новый цвет или фактура</li><li>Защита поверхности под плёнкой</li><li>Плёнку можно снять и вернуть прежний вид</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="2">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">04</span><h3>Полиуретановая и виниловая плёнка</h3><p>Защита лака и смена цвета.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Полиуретановая и виниловая плёнка</h3><p class="ld">Это два разных материала для разных задач. Полиуретановая плёнка защищает лак от сколов и мелких царапин. Виниловая меняет цвет и стиль автомобиля. Какую выбрать, подскажет мастер на осмотре.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Новый автомобиль, который хочется сохранить</li><li>Много поездок по трассе и сколов от гравия</li><li>Нужен матовый, цветной или необычный вид</li></ul></div><div><h4>Как проходит</h4><ol><li>Разговор: какая задача важнее — защита или цвет</li><li>Подготовка кузова</li><li>Монтаж плёнки на нужные элементы или весь кузов</li><li>Контроль краёв и швов</li></ol></div><div><h4>Что вы получите</h4><ul><li>Защита лакокрасочного покрытия</li><li>Или новый цвет и фактура кузова</li><li>Аккуратные края без лишних стыков</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="3">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">05</span><h3>Шумоизоляция</h3><p>Тише в салоне на любой скорости.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Шумоизоляция</h3><p class="ld">Снижает шум дороги, колёс и ветра в салоне. В машине становится спокойнее, музыка звучит чище, а длинные поездки меньше утомляют. Можно обработать двери, пол, арки, багажник, крышу.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Громко на трассе</li><li>Гул колёс в арках</li><li>Звук из багажника и дребезжание панелей</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр и выбор зон обработки</li><li>Аккуратный демонтаж обшивки</li><li>Укладка материалов на нужные участки</li><li>Сборка и проверка: ничего не скрипит</li></ol></div><div><h4>Что вы получите</h4><ul><li>Тише в салоне на любой скорости</li><li>Чище звук аудиосистемы</li><li>Комфортнее дальние поездки</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="4">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">06</span><h3>Химчистка и мойка моторного отсека</h3><p>Чистый моторный отсек без вреда для узлов.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Химчистка и мойка моторного отсека</h3><p class="ld">Чистый моторный отсек проще обслуживать: сразу видно подтёки масла и жидкостей, а при продаже машина выглядит ухоженной. Мойка выполняется бережно: чувствительные узлы и электрику защищают.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Грязь и масляный налёт под капотом</li><li>Подготовка автомобиля к продаже</li><li>Перед диагностикой или ремонтом, чтобы видеть утечки</li></ul></div><div><h4>Как проходит</h4><ol><li>Защита чувствительных узлов и электрики</li><li>Нанесение очистителя</li><li>Бережная мойка и сушка</li><li>Обработка пластика защитным составом</li></ol></div><div><h4>Что вы получите</h4><ul><li>Чистый моторный отсек</li><li>Аккуратный вид под капотом</li><li>Подтёки сразу заметны</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="5">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">07</span><h3>Полировка кузова</h3><p>Убираем царапины, возвращаем глубину цвета.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Полировка кузова</h3><p class="ld">Убирает мелкие царапины, «паутину», потускнение и возвращает глубину цвета. При полировке снимается тонкий слой лака, поэтому мастер сначала оценивает состояние покрытия, а уже потом выбирает режим работы.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Потускнел цвет, появилась «паутина»</li><li>Мелкие царапины и следы от мойки</li><li>Подготовка к керамике или плёнке</li></ul></div><div><h4>Как проходит</h4><ol><li>Мойка и очистка кузова</li><li>Оценка состояния лака</li><li>Полировка в несколько проходов</li><li>Финальная протирка и осмотр при свете</li></ol></div><div><h4>Что вы получите</h4><ul><li>Ровный глубокий блеск</li><li>Убранные мелкие дефекты</li><li>Идеальная основа под керамику</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="6">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">08</span><h3>Нанесение керамики</h3><p>Керамическое покрытие: блеск и защита.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Нанесение керамики</h3><p class="ld">Керамическое покрытие создаёт на кузове твёрдый защитный слой: блеск, водоотталкивание, грязь смывается легче. Наносится после полировки, когда поверхность подготовлена. На работы действует гарантия 7 лет.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Новый автомобиль, который хочется защитить</li><li>После полировки, чтобы закрепить результат</li><li>Хотите, чтобы машина дольше оставалась чистой</li></ul></div><div><h4>Как проходит</h4><ol><li>Мойка и подготовка поверхности</li><li>Полировка при необходимости</li><li>Нанесение керамического состава</li><li>Выдержка и финальный осмотр</li></ol></div><div><h4>Что вы получите</h4><ul><li>Стойкий блеск и защита лака</li><li>Вода и грязь стекают легче</li><li>Гарантия 7 лет, условия объясняются при осмотре</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="7">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><details class="dt"><summary class="row"><span class="n">09</span><h3>Тонирование стёкол и детейлинг</h3><p>Тонировка и комплексный уход за авто.</p><span class="ar">→</span></summary><div class="det"><h3 class="dh">Тонирование стёкол и детейлинг</h3><p class="ld">Тонировка снижает нагрев салона и яркость солнца, добавляет приватности. Комплексный детейлинг — это уход за автомобилем снаружи и внутри за один визит. Допустимое затемнение мастер подскажет с учётом правил.</p><div class="dc"><div><h4>Когда нужно</h4><ul><li>Жарко в салоне летом</li><li>Нужна приватность и меньше бликов</li><li>Хочется освежить автомобиль целиком</li></ul></div><div><h4>Как проходит</h4><ol><li>Осмотр и подбор плёнки по затемнению</li><li>Подготовка стёкол</li><li>Установка плёнки без пузырей и пыли</li><li>Комплексная очистка по желанию: кузов и салон</li></ol></div><div><h4>Что вы получите</h4><ul><li>Комфортнее в жару</li><li>Больше приватности</li><li>Свежий вид автомобиля снаружи и внутри</li></ul></div></div><p class="note">Стоимость и срок мастер называет после осмотра автомобиля.</p><div class="cta"><button class="btn" type="button" data-book="8">Записаться на эту услугу →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div></details><a class="row more" href="#zapis" data-book="-1"><span class="n">+</span><h3>Другая услуга?</h3><p>Опишите задачу, мастер подскажет после осмотра.</p><span class="ar">→</span></a></div>
+  <p class="note rv" style="margin-top:26px">Стоимость называем после осмотра автомобиля: у каждой машины свой объём работ.</p>
 </section>
 
 
 <!-- ===== РАБОТЫ ===== -->
-<div class="cband rv"><p>Вашей задачи нет в списке? Опишите её. Честно скажем, можно ли сделать.</p><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div>
+<div class="cband rv"><p>Не нашли свою задачу? Расскажите, что нужно машине: мастер подскажет после осмотра.</p><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div>
 <section class="sec" id="raboty">
   <div class="sec-h rv"><div><span class="kick">Работы</span><h2 class="h">До и <em>после</em></h2></div></div>
   <div class="ba rv" id="ba">
@@ -482,17 +490,16 @@ html:not(.js) .orb .oh,.emb .orb .oh{display:none}
   </div>
   <div class="wr rv" id="wr"><button class="ra p" id="wp" type="button" aria-label="Назад">←</button><button class="ra nx" id="wn" type="button" aria-label="Вперёд">→</button><div class="ring" id="wring"></div></div>
   <div class="lb" id="lb" hidden><button class="lbx" id="lbx" type="button" aria-label="Закрыть">×</button><button class="ra p" id="lbp" type="button" aria-label="Назад">←</button><button class="ra nx" id="lbn" type="button" aria-label="Вперёд">→</button><img id="lbi" alt=""></div>
-  <p class="note rv" style="margin-top:28px">Изображения на этом сайте демонстрационные: это концепт.</p>
-</section>
+  </section>
 
 <!-- ===== ПРОЦЕСС ===== -->
-<div class="cband rv"><p>Хотите так же? Выберите время. Остальное на нас.</p><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div>
+<div class="cband rv"><p>Хотите, чтобы ваша машина выглядела так же? Выберите время, мастер подтвердит запись.</p><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div>
 <section class="sec" style="padding-top:0">
   <div class="sec-h rv"><div><span class="kick">Как это работает</span><h2 class="h">Три шага<br>без <em>сюрпризов</em></h2></div></div>
   <div class="steps">
-    <div class="step rv"><b>01</b><h4>Осмотр</h4><p>Смотрим машину при нормальном свете. Говорим, что нужно, и что можно не делать.</p></div>
-    <div class="step rv"><b>02</b><h4>Цена</h4><p>Фиксируем стоимость и срок до начала. Сумма в конце не меняется.</p></div>
-    <div class="step rv"><b>03</b><h4>Результат</h4><p>Показываем работу при вас, при свете. Оформляем гарантию.</p></div>
+    <div class="step rv"><b>01</b><h4>Осмотр</h4><p>Приезжаете или пишете в WhatsApp. Мастер смотрит автомобиль и говорит, что нужно, а что нет.</p></div>
+    <div class="step rv"><b>02</b><h4>Согласование</h4><p>Называем стоимость и срок до начала работы. Без доплат по ходу дела.</p></div>
+    <div class="step rv"><b>03</b><h4>Работа и гарантия</h4><p>Делаем аккуратно, отдаём автомобиль и подтверждаем гарантию на 7 лет.</p></div>
   </div>
 </section>
 
@@ -501,8 +508,8 @@ html:not(.js) .orb .oh,.emb .orb .oh{display:none}
   <div class="big" aria-hidden="true">7</div>
   <div class="in rv">
     <span class="kick">Гарантия</span>
-    <h2 class="h">Мы отвечаем<br><em>документом</em></h2>
-    <p class="lead">Семь лет гарантии на керамику. Условия обсуждаем до начала работ, а не тогда, когда что-то пошло не так.</p>
+    <h2 class="h">Семь лет<br>на <em>результат</em></h2>
+    <p class="lead">Мы уверены в своей работе. Условия гарантии мастер объясняет при осмотре, до начала работ.</p>
     <div style="margin-top:34px"><a class="btn" href="#zapis">Записаться →</a></div>
   </div>
 </section>
@@ -515,14 +522,13 @@ html:not(.js) .orb .oh,.emb .orb .oh{display:none}
 
 <section class="sec" id="vopros">
   <div class="sec-h rv"><div><span class="kick">Вопросы</span><h2 class="h">Коротко<br>о <em>главном</em></h2></div></div>
-  <div class="faq rv" id="faq"><div class="q"><button type="button">Сколько стоит?<span>+</span></button><div class="a"><div><p>Зависит от машины и её состояния. Поэтому цену называем после осмотра: один раз и окончательно.</p></div></div></div><div class="q"><button type="button">Что с гарантией?<span>+</span></button><div class="a"><div><p>На керамику 7 лет. Условия фиксируем письменно до начала работ.</p></div></div></div><div class="q"><button type="button">Нужно записываться заранее?<span>+</span></button><div class="a"><div><p>Да. Одна машина, один мастер, без конвейера. Поэтому время бронируется.</p></div></div></div><div class="q"><button type="button">Сколько ждать машину?<span>+</span></button><div class="a"><div><p>От нескольких часов до нескольких дней, в зависимости от услуги. Точный срок называем на осмотре.</p></div></div></div></div>
+  <div class="faq rv" id="faq"><div class="q"><button type="button">Сколько стоит работа?<span>+</span></button><div class="a"><div><p>Стоимость зависит от автомобиля и объёма работ, поэтому мастер называет её после осмотра. Осмотр можно согласовать в WhatsApp.</p></div></div></div><div class="q"><button type="button">Сколько действует гарантия?<span>+</span></button><div class="a"><div><p>Гарантия на работы — 7 лет. Условия мастер объясняет при осмотре, до начала работ.</p></div></div></div><div class="q"><button type="button">Нужно ли записываться заранее?<span>+</span></button><div class="a"><div><p>Лучше записаться: мастер работает лично и берёт одну машину за раз. Это можно сделать здесь или в WhatsApp.</p></div></div></div><div class="q"><button type="button">Где вы находитесь и когда работаете?<span>+</span></button><div class="a"><div><p>Астана. Ежедневно с 10:00 до 22:00, без выходных. (Демо: здесь будет адрес вашей студии.)</p></div></div></div></div>
 </section>
 
 <!-- ===== ЗАПИСЬ ===== -->
 <section class="sec" id="zapis" style="padding-top:0">
   <div class="sec-h rv"><div><span class="kick">Запись</span><h2 class="h">Выберите <em>время</em></h2></div></div>
   <div class="book">
-    <noscript><p class="note">Включите JavaScript, чтобы выбрать время.</p></noscript>
 <form class="form rv" id="form" novalidate>
       <div><label class="fl">Услуга</label><div class="chips" id="bs"></div></div>
       <div><label class="fl">День</label><div class="chips" id="bd"></div></div>
@@ -532,41 +538,42 @@ html:not(.js) .orb .oh,.emb .orb .oh{display:none}
         <div><label class="fl" for="ph">Телефон</label><input class="inp" id="ph" placeholder="+7 ___ ___ __ __" inputmode="tel" autocomplete="tel"></div>
       </div>
       <div class="err" id="err"></div>
-      <div><button class="btn" type="submit">Забронировать время →</button><p class="note" style="margin-top:14px">Это концепт: заявка никуда не отправляется. В рабочей версии она за секунду приходит мастеру в WhatsApp.</p></div>
+      <div><button class="btn" type="submit">Отправить заявку в WhatsApp →</button><p class="note" style="margin-top:14px">Откроется WhatsApp с готовым сообщением. Мастер подтвердит время.</p></div>
     </form>
     <aside class="info rv">
       <h4>Контакты</h4>
       <dl>
         <div><dt>Город</dt><dd>Астана</dd></div>
-        <div><dt>Часы работы</dt><dd>Каждый день, 10:00–22:00</dd></div>
-        <div><dt>Связь</dt><dd>WhatsApp и Instagram подключаются в рабочей версии</dd></div>
+        <div><dt>Часы работы</dt><dd>Ежедневно, 10:00–22:00</dd></div>
+        <div><dt>Связь</dt><dd>Здесь будут контакты вашей студии</dd></div>
       </dl>
+      
     </aside>
   </div>
 </section>
 </main>
 
-<div class="wm rv" id="wm" aria-hidden="true"><span class="w1"><span style="--i:0">O</span><span style="--i:1">B</span><span style="--i:2">S</span><span style="--i:3">I</span><span style="--i:4">D</span><span style="--i:5">I</span><span style="--i:6">A</span><span style="--i:7">N</span></span><span class="w2"><span style="--i:8">s</span><span style="--i:9">t</span><span style="--i:10">u</span><span style="--i:11">d</span><span style="--i:12">i</span><span style="--i:13">o</span></span></div>
-<footer><span>© Obsidian Studio</span><span>Концепт-сайт. Бренд и изображения вымышлены</span></footer>
+<div class="wm rv" id="wm" aria-hidden="true"><span class="w1"><span style="--i:0">D</span><span style="--i:1">E</span><span style="--i:2">T</span><span style="--i:3">A</span><span style="--i:4">I</span><span style="--i:5">L</span><span style="--i:6">I</span><span style="--i:7">N</span><span style="--i:8">G</span></span><span class="w2"><span style="--i:9">L</span><span style="--i:10">a</span><span style="--i:11">b</span></span></div>
+<footer><span>© Detailing Lab — демонстрационный сайт</span><span>Астана · пример работы веб-дизайнера</span></footer>
 <a class="btn fab" id="fab" href="#zapis">Записаться →</a>
 
 <script>
 const CFG={wa:'',reviews:[]/* сюда: {img:'assets/r1.jpg'} или {text:'…',name:'Имя'} — только настоящие */,
  services:[
-  {t:"Ремонт лобового стекла",d:"Скол не приговор. Чиним, пока не пошла трещина.",img:"front"},
-  {t:"Автосвет, ретрофит",d:"Яркий ровный свет вместо мутных фар.",img:"front"},
-  {t:"Оклейка кузова и салона",d:"Новый цвет кузова и салона без покраски.",img:"profile"},
-  {t:"Полиуретановая и виниловая плёнка",d:"Полиуретан защищает лак, винил меняет стиль.",img:"profile"},
-  {t:"Шумоизоляция",d:"Минус гул и дребезг. Плюс нервы.",img:"interior"},
-  {t:"Химчистка и мойка моторного отсека",d:"Чистый подкапотный: видно каждую утечку.",img:"wheel"},
-  {t:"Полировка кузова",d:"Минус паутина и царапины, плюс глубина цвета.",img:"hood"},
-  {t:"Нанесение керамики",d:"Твёрдый слой блеска. Грязь не цепляется.",img:"hood"},
-  {t:"Тонирование стёкол и детейлинг",d:"Прохлада, приватность и полный уход за один визит.",img:"interior"}],
+  {t:"Ремонт лобового стекла",d:"Сколы и трещины: восстановим стекло.",img:"front"},
+  {t:"Автосвет, ретрофит",d:"Современный свет вместо штатного.",img:"front"},
+  {t:"Оклейка кузова и салона",d:"Плёнка на кузов и элементы салона.",img:"profile"},
+  {t:"Полиуретановая и виниловая плёнка",d:"Защита лака и смена цвета.",img:"profile"},
+  {t:"Шумоизоляция",d:"Тише в салоне на любой скорости.",img:"interior"},
+  {t:"Химчистка и мойка моторного отсека",d:"Чистый моторный отсек без вреда для узлов.",img:"wheel"},
+  {t:"Полировка кузова",d:"Убираем царапины, возвращаем глубину цвета.",img:"hood"},
+  {t:"Нанесение керамики",d:"Керамическое покрытие: блеск и защита.",img:"hood"},
+  {t:"Тонирование стёкол и детейлинг",d:"Тонировка и комплексный уход за авто.",img:"interior"}],
  faq:[
-  ["Сколько стоит?","Зависит от машины и её состояния. Поэтому цену называем после осмотра: один раз и окончательно."],
-  ["Что с гарантией?","На керамику 7 лет. Условия фиксируем письменно до начала работ."],
-  ["Нужно записываться заранее?","Да. Одна машина, один мастер, без конвейера. Поэтому время бронируется."],
-  ["Сколько ждать машину?","От нескольких часов до нескольких дней, в зависимости от услуги. Точный срок называем на осмотре."]]
+  ["Сколько стоит работа?","Стоимость зависит от автомобиля и объёма работ, поэтому мастер называет её после осмотра. Осмотр можно согласовать в WhatsApp."],
+  ["Сколько действует гарантия?","Гарантия на работы — 7 лет. Условия мастер объясняет при осмотре, до начала работ."],
+  ["Нужно ли записываться заранее?","Лучше записаться: мастер работает лично и берёт одну машину за раз. Это можно сделать здесь или в WhatsApp."],
+  ["Где вы находитесь и когда работаете?","Астана. Ежедневно с 10:00 до 22:00, без выходных. (Демо: здесь будет адрес вашей студии.)"]]
 };
 const $=s=>document.querySelector(s),cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
 const hdr=$('#hdr');addEventListener('scroll',()=>hdr.classList.toggle('sc',scrollY>40),{passive:true});
@@ -591,18 +598,12 @@ fill('bs',CFG.services.map(s=>s.t));fill('bd',days.map(dl));fill('bt',times);
 function pick(id,i){const k={bs:'s',bd:'d',bt:'t'}[id];S[k]=i;document.querySelectorAll('#'+id+' .chip').forEach((c,j)=>c.classList.toggle('on',j===i))}
 $('#form').addEventListener('submit',e=>{e.preventDefault();
  const nm=$('#nm').value.trim(),ph=$('#ph').value.replace(/\D/g,''),er=$('#err');
- er.classList.remove('ok');if(S.s===null||S.d===null||S.t===null){er.textContent='Выберите услугу, день и время.';return}
+ if(S.s===null||S.d===null||S.t===null){er.textContent='Выберите услугу, день и время.';return}
  if(ph.length<10){er.textContent='Укажите телефон, чтобы мастер мог подтвердить запись.';return}
  er.textContent='';
  const d=days[S.d],msg=`Здравствуйте! Хочу записаться: ${CFG.services[S.s].t}, ${dl(d,S.d)} (${d.getDate()} ${mn[d.getMonth()]}) в ${times[S.t]}.${nm?' Меня зовут '+nm+'.':''} Телефон: +${ph}.`;
- er.classList.add('ok');er.textContent='Готово: '+CFG.services[S.s].t+', '+dl(d,S.d)+' в '+times[S.t]+'. В рабочей версии заявка ушла бы мастеру в WhatsApp.';void msg});
-
-/* ---- заголовки: строки выезжают из-под маски ---- */
-document.querySelectorAll('.sec-h .h,.war .h').forEach(h=>{h.innerHTML=h.innerHTML.split(/<br\s*\/?>/i).map(x=>'<span class="ln"><span>'+x+'</span></span>').join('')});
-/* ---- полоса прогресса прокрутки ---- */
-(function(){const b=document.createElement('i');b.id='sp';document.body.appendChild(b);let tk=0;const u=()=>{tk=0;const m=document.documentElement.scrollHeight-innerHeight;b.style.transform='scaleX('+(m>0?scrollY/m:0).toFixed(4)+')'};addEventListener('scroll',()=>{if(!tk)tk=requestAnimationFrame(u)},{passive:true});u()})();
-/* ---- магнитные кнопки (только мышь) ---- */
-if(document.documentElement.classList.contains('dk'))document.querySelectorAll('.btn:not(.fab)').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${((e.clientX-r.left)/r.width-.5)*10}px,${((e.clientY-r.top)/r.height-.5)*8}px)`});b.addEventListener('mouseleave',()=>{b.style.transform=''})});
+ if(!CFG.wa){er.textContent='Демо-режим: в боевой версии заявка уходит прямо в WhatsApp студии.';return}
+ window.open('https://wa.me/'+CFG.wa+'?text='+encodeURIComponent(msg),'_blank')});
 
 /* ---- появление ---- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
@@ -623,7 +624,7 @@ setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in
  const dets=[...document.querySelectorAll('.dt .det')];const N=L.length;let act=-1;
  $('#shl').innerHTML=L.map((c,k)=>`<li><button type="button" data-k="${k}"><span class="n">${c.n}</span><span class="t">${c.t}</span></button></li>`).join('')+`<li><button type="button" class="o" data-k="${N}"><span class="n">+</span><span class="t">Другая услуга?</span></button></li>`;
  $('#shi').innerHTML=L.map((c,k)=>`<img src="${imgOf(c.img)}" alt="" data-k="${k}">`).join('')+`<img src="${imgOf('wheel')}" alt="" data-k="${N}"><span class="cnt" id="cnt"></span>`;
- const other='<div class="det"><h3 class="dh">Другая услуга?</h3><p class="ld">Вашей задачи нет в списке? Опишите её на осмотре. Честно скажем, можно ли сделать.</p><div class="cta"><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button></div></div>';
+ const other='<div class="det"><h3 class="dh">Другая услуга?</h3><p class="ld">Не нашли свою задачу в списке? Опишите её мастеру: после осмотра он подскажет, что нужно именно вашему автомобилю.</p><div class="cta"><button class="btn" type="button" data-book="-1">Записаться на осмотр →</button><a class="btn o" href="#zapis">Выбрать время</a></div></div>';
  const R=sh.querySelector('.shr');
  const go=k=>{if(k>=0)k=((k%(N+1))+N+1)%(N+1);if(k===act)return;act=k;
   document.querySelectorAll('#shl button').forEach((b,j)=>b.classList.toggle('on',j===k));
