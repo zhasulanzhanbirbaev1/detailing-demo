@@ -1,1 +1,3 @@
-# Detailing Bro Astana: demo
+# Obsidian Studio: концепт сайта детейлинга
+
+Бренд и изображения вымышлены.
